@@ -19,9 +19,10 @@ class MyApp extends StatelessWidget {
         ),
         backgroundColor: kBackgroundColor,
         primaryColor: kPrimaryColor,
-        toggleableActiveColor: kPrimaryColor,
+        primarySwatch: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
       home: ProductsPage(),
     );
   }

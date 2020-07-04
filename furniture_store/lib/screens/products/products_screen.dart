@@ -3,9 +3,12 @@ import 'package:furniture_store/constants.dart';
 import 'package:furniture_store/models/product.dart';
 
 class ProductsPage extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           'Furniture',
@@ -18,12 +21,15 @@ class ProductsPage extends StatelessWidget {
               Icons.format_align_center,
               color: kPrimaryColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              _scaffoldKey.currentState.openEndDrawer();
+            },
           )
         ],
         elevation: 0,
         backgroundColor: Colors.white,
       ),
+      endDrawer: new AppDrawer(),
       body: Main(),
       // body: Container(
       //   child: Text('testando'),
@@ -64,14 +70,38 @@ class ProductsPage extends StatelessWidget {
   }
 }
 
+class AppDrawer extends StatefulWidget {
+  @override
+  _AppDrawerState createState() => new _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    return new Drawer(
+      child: new ListView(children: <Widget>[
+        ListTile(
+          leading: Icon(Icons.shopping_cart),
+          title: Text('Checkout'),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: Icon(Icons.report),
+          title: Text('Transactions'),
+          onTap: () {},
+        ),
+      ]),
+    );
+  }
+}
+
 class Main extends StatefulWidget {
   @override
   _MainState createState() => _MainState();
 }
 
 class _MainState extends State<Main> {
-  int selectedItem = 1;
-  List<String> catagories = ['Armchair', 'Bed', 'Lamps', 'Tables'];
+  int selectedItem = 0;
 
   void _selectCatagory(int newCatagory) {
     setState(() {
@@ -111,7 +141,7 @@ class _MainState extends State<Main> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Icon(Icons.fullscreen_exit,
+                        Icon(catagories[index].icon,
                             color: index == selectedItem
                                 ? Colors.white
                                 : kPrimaryColor),
@@ -119,7 +149,7 @@ class _MainState extends State<Main> {
                           width: 5.0,
                         ),
                         Text(
-                          '${catagories[index]}',
+                          '${catagories[index].name}',
                           style: TextStyle(
                               color: index == selectedItem
                                   ? Colors.white
@@ -132,7 +162,7 @@ class _MainState extends State<Main> {
       ),
       Container(
         // margin: EdgeInsets.symmetric(horizontal: 30.0),
-        margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
+        margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -197,8 +227,26 @@ class _ProductsListState extends State<ProductsList> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('${item.price}.00'),
-                          Text('${item.stars}')
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.attach_money,
+                                size: 18,
+                                color: Colors.yellow[700],
+                              ),
+                              Text('${item.price}.00'),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.star,
+                                size: 18,
+                                color: Colors.yellow[600],
+                              ),
+                              Text('${item.stars}'),
+                            ],
+                          ),
                         ],
                       )
                     ],
@@ -208,28 +256,5 @@ class _ProductsListState extends State<ProductsList> {
         )
       ],
     ));
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  ProductCard(String title);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 150,
-        height: 200,
-        margin: EdgeInsets.only(top: 10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.white54, Colors.grey[200]])),
-        child: Column(
-          children: <Widget>[
-            Text('Nome'),
-          ],
-        ));
   }
 }
