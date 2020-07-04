@@ -1,4 +1,4 @@
 # FurnitureStore
 App for a Furniture Store.
 
-![Screenshot](border_radius/products_page.jpg)
+![Screenshot](furniture_store/products_page.jpg)
