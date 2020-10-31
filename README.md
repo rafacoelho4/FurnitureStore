@@ -1,9 +1,9 @@
 # FurnitureStore
 
 <p align="center">
-  <a href="#-projeto">O Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologia</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-instalação">Instalação</a>
 </p>
 
 <p align="center">
@@ -27,3 +27,7 @@ Para baixar esse projeto basta ter Git instalado no computador e executar o coma
 ```
 git clone https://github.com/rafacoelho4/FurnitureStore.git
 ```
+
+---
+
+Feito com ♥ by Rafael Coelho Monte Alto
