@@ -258,3 +258,15 @@ class _ProductsListState extends State<ProductsList> {
     ));
   }
 }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Expanded(
+      child: Center(
+        child: Text('olá bacons'),
+      ),
+    ));
+  }
+}
